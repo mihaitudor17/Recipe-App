@@ -3,11 +3,11 @@ import subprocess
 import webbrowser
 
 def start_server(port=8000):
-    # Change directory to where your files are located
-    os.chdir("/path/to/your/files")
+    # Get the current working directory
+    current_directory = os.getcwd()
 
     # Start the HTTP server in the background
-    subprocess.Popen(["python", "-m", "http.server", str(port)])
+    subprocess.Popen(["python", "-m", "http.server", str(port)], cwd=current_directory)
 
     # Open the browser to the specified path
     webbrowser.open("http://localhost:{}".format(port))
